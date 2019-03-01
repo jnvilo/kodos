@@ -7,7 +7,7 @@ from .util import *
 #from PyQt5.QtCore import *
 #from PyQt5 import *
 from PyQt5.QtWidgets import QMainWindow
-
+from PyQt5.QtWidgets import QWidget
 import sys
 import string
 import smtplib
@@ -15,9 +15,13 @@ from .version import VERSION
 
 AUTHOR_ADDR = "phil_schwartz@users.sourceforge.net"
 
-class reportBug(Ui_reportBugBA):
+class reportBug(QWidget, Ui_reportBugBA):
     def __init__(self, parent=None, name=None):
-        reportBugBA.__init__(self, parent)
+        #reportBugBA.__init__(self, parent)
+        
+        super(reportBug,self).__init__()
+        self.setupUi(self)
+        
         self.parent = parent
         self.kodos_main = parent.kodos_main
         self.populate()
@@ -25,7 +29,7 @@ class reportBug(Ui_reportBugBA):
 
     def populate(self):
         self.OSEdit.setText(sys.platform)
-        pyvers = string.replace(sys.version, "\n", " - ")
+        pyvers = sys.version.replace("\n", " - ")
         self.pythonVersionEdit.setText(pyvers)
         self.PyQtVersionEdit.setText(QT_VERSION_STR)
         self.regexMultiLineEdit.setPlainText(self.kodos_main.regexMultiLineEdit.toPlainText())
@@ -96,11 +100,14 @@ class reportBugWindow(QMainWindow):
     def createMenu(self):
         self.menubar = self.menuBar()
         self.filemenu = self.menubar.addMenu(self.tr("&File"))
-        self.filemenu.addAction(self.tr("&Close"), self, SLOT("close()"))
+        
+        closeAction = QAction(self.tr("close"),self)
+        self.filemenu.addAction(closeAction)
 
 
     def createToolBar(self):
         toolbar = QToolBar()
         self.addToolBar(toolbar)
         self.logolabel = kodos_toolbar_logo(toolbar)
+        
 

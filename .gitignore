@@ -1,0 +1,13 @@
+*.pyc
+__pycache__
+bin/
+lib/
+include/
+lib64/
+lib64
+share/
+wingide.wpr
+wingide.wpu
+wing.wpr
+wing.wpu
+venv/

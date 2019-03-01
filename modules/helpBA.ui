@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>HelpBA</class>
+ <widget class="QMainWindow" name="HelpBA">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>494</width>
+    <height>585</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Kodos Help</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../kodos.qrc">
+    <normaloff>:/images/kodos_icon.png</normaloff>:/images/kodos_icon.png</iconset>
+  </property>
+  <widget class="QWidget" name="widget"/>
+  <widget class="QToolBar" name="toolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="fileBackAction"/>
+   <addaction name="fileForwardAction"/>
+   <addaction name="separator"/>
+   <addaction name="fileHomeAction"/>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>494</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="fileHomeAction"/>
+    <addaction name="fileBackAction"/>
+    <addaction name="fileForwardAction"/>
+    <addaction name="separator"/>
+    <addaction name="fileExitAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
+  </widget>
+  <action name="fileHomeAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/go-home.png</normaloff>:/images/go-home.png</iconset>
+   </property>
+   <property name="text">
+    <string>Home</string>
+   </property>
+   <property name="iconText">
+    <string>Home</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileHomeAction</cstring>
+   </property>
+  </action>
+  <action name="fileBackAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/go-previous.png</normaloff>:/images/go-previous.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="iconText">
+    <string>Back</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+B</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileBackAction</cstring>
+   </property>
+  </action>
+  <action name="fileForwardAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/go-next.png</normaloff>:/images/go-next.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forward</string>
+   </property>
+   <property name="iconText">
+    <string>Forward</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileForwardAction</cstring>
+   </property>
+  </action>
+  <action name="fileExitAction">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+   <property name="iconText">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileExitAction</cstring>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="../kodos.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>HelpBA</receiver>
+   <slot>exitSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileBackAction</sender>
+   <signal>activated()</signal>
+   <receiver>HelpBA</receiver>
+   <slot>backSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileForwardAction</sender>
+   <signal>activated()</signal>
+   <receiver>HelpBA</receiver>
+   <slot>forwardSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileHomeAction</sender>
+   <signal>activated()</signal>
+   <receiver>HelpBA</receiver>
+   <slot>homeSlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

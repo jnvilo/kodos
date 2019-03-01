@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>KodosBA</class>
+ <widget class="QMainWindow" name="KodosBA">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>590</width>
+    <height>900</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Kodos - The Python Regex Debugger</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../kodos.qrc">
+    <normaloff>:/images/kodos_icon.png</normaloff>:/images/kodos_icon.png</iconset>
+  </property>
+  <property name="windowIconText">
+   <string>Kodos</string>
+  </property>
+  <widget class="QWidget" name="widget">
+   <layout class="QGridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="groupBox1">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="title">
+       <string>Regular Expression Pattern</string>
+      </property>
+      <layout class="QGridLayout">
+       <item row="0" column="0">
+        <widget class="QPlainTextEdit" name="regexMultiLineEdit"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QTabWidget" name="resultTabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Group</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QTableWidget" name="groupTable">
+          <property name="selectionMode">
+           <enum>QAbstractItemView::SingleSelection</enum>
+          </property>
+          <column>
+           <property name="text">
+            <string>Group Name</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Match</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Match</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="matchTextBrowser">
+          <property name="undoRedoEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage">
+       <attribute name="title">
+        <string>Match All</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="matchAllTextBrowser">
+          <property name="undoRedoEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage">
+       <attribute name="title">
+        <string>Replace</string>
+       </attribute>
+       <layout class="QVBoxLayout">
+        <item>
+         <widget class="QPlainTextEdit" name="replaceTextBrowser">
+          <property name="undoRedoEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage">
+       <attribute name="title">
+        <string>Sample Code</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="codeTextBrowser">
+          <property name="undoRedoEnabled">
+           <bool>false</bool>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QTabWidget" name="tabWidget3">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Search String</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QPlainTextEdit" name="stringMultiLineEdit"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Replace String</string>
+       </attribute>
+       <layout class="QGridLayout">
+        <item row="0" column="0">
+         <widget class="QTextEdit" name="replaceTextEdit"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <layout class="QHBoxLayout">
+      <item>
+       <spacer name="spacer1">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>70</width>
+          <height>31</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="textLabel1">
+        <property name="text">
+         <string>Match Number</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="matchNumberSpinBox">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>9999</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="spacerLabel">
+        <property name="pixmap">
+         <pixmap>image1</pixmap>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="replaceLabel">
+        <property name="text">
+         <string>Replace Number</string>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="replaceNumberSpinBox"/>
+      </item>
+      <item>
+       <spacer name="spacer3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>118</width>
+          <height>21</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>Flags</string>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QCheckBox" name="ignorecaseCheckBox">
+         <property name="toolTip">
+          <string>Perform case-insensitive matching; expressions like [A-Z] will match
+lowercase letters, too. This is not affected by the current locale.</string>
+         </property>
+         <property name="text">
+          <string>Ignore Case</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="multilineCheckBox">
+         <property name="toolTip">
+          <string>When specified, the pattern character &quot;^&quot; matches at the beginning of the 
+string and at the beginning of each line (immediately following each newline); 
+and the pattern character &quot;$&quot; matches at the end of the string and at the end 
+of each line (immediately preceding each newline). By default, &quot;^&quot; matches 
+only at the beginning of the string, and &quot;$&quot; only at the end of the string and 
+immediately before the newline (if any) at the end of the string.</string>
+         </property>
+         <property name="text">
+          <string>Multi Line</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="dotallCheckBox">
+         <property name="toolTip">
+          <string>Make the &quot;.&quot; special character match any character at all, including a 
+newline; without this flag, &quot;.&quot; will match anything except a newline.</string>
+         </property>
+         <property name="text">
+          <string>Dot All</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="verboseCheckBox">
+         <property name="toolTip">
+          <string>This flag allows you to write regular expressions that look nicer. Whitespace 
+within the pattern is ignored, except when in a character class or preceded by 
+an unescaped backslash, and, when a line contains a &quot;#&quot; neither in a character
+class or preceded by an unescaped backslash, all characters from the leftmost 
+such &quot;#&quot; through the end of the line are ignored.</string>
+         </property>
+         <property name="text">
+          <string>Verbose</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="localeCheckBox">
+         <property name="toolTip">
+          <string>Make \w, \W, \b, and \B dependent on the current locale.</string>
+         </property>
+         <property name="text">
+          <string>Locale</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="unicodeCheckBox">
+         <property name="toolTip">
+          <string>&quot;Make \w, \W, \b, and \B dependent on the Unicode character properties 
+database. New in Python version 2.0.</string>
+         </property>
+         <property name="text">
+          <string>Unicode</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonIconOnly</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="fileNewAction"/>
+   <addaction name="fileOpenAction"/>
+   <addaction name="fileSaveAction"/>
+   <addaction name="separator"/>
+   <addaction name="editCutAction"/>
+   <addaction name="editCopyAction"/>
+   <addaction name="editPasteAction"/>
+   <addaction name="separator"/>
+   <addaction name="editPauseAction"/>
+   <addaction name="examineAction"/>
+   <addaction name="separator"/>
+   <addaction name="helpRegexReferenceAction"/>
+   <addaction name="helpRegexLibAction"/>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>590</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <addaction name="fileNewAction"/>
+    <addaction name="fileOpenAction"/>
+    <addaction name="fileSaveAction"/>
+    <addaction name="fileSaveAsAction"/>
+    <addaction name="separator"/>
+    <addaction name="FileRevertAction"/>
+    <addaction name="separator"/>
+    <addaction name="fileImportFileAction"/>
+    <addaction name="fileImportURLAction"/>
+    <addaction name="separator"/>
+    <addaction name="fileExitAction"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="editMenu">
+    <property name="title">
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="editUndoAction"/>
+    <addaction name="editRedoAction"/>
+    <addaction name="separator"/>
+    <addaction name="editCutAction"/>
+    <addaction name="editCopyAction"/>
+    <addaction name="editPasteAction"/>
+    <addaction name="separator"/>
+    <addaction name="examineAction"/>
+    <addaction name="editPauseAction"/>
+    <addaction name="separator"/>
+    <addaction name="editPreferencesAction"/>
+   </widget>
+   <widget class="QMenu" name="helpMenu">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="helpHelpAction"/>
+    <addaction name="helpPythonHelpAction"/>
+    <addaction name="separator"/>
+    <addaction name="helpRegexReferenceAction"/>
+    <addaction name="helpRegexLibAction"/>
+    <addaction name="separator"/>
+    <addaction name="helpVisitWebsiteAction"/>
+    <addaction name="helpCheckForUpdateAction"/>
+    <addaction name="helpReportBugAction"/>
+    <addaction name="separator"/>
+    <addaction name="helpAboutAction"/>
+   </widget>
+   <addaction name="fileMenu"/>
+   <addaction name="editMenu"/>
+   <addaction name="helpMenu"/>
+  </widget>
+  <action name="fileNewAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/document-new.png</normaloff>:/images/document-new.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;New</string>
+   </property>
+   <property name="iconText">
+    <string>New</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileNewAction</cstring>
+   </property>
+  </action>
+  <action name="fileOpenAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/document-open.png</normaloff>:/images/document-open.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Open...</string>
+   </property>
+   <property name="iconText">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="fileSaveAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/document-save.png</normaloff>:/images/document-save.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Save</string>
+   </property>
+   <property name="iconText">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileSaveAction</cstring>
+   </property>
+  </action>
+  <action name="fileSaveAsAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/document-save-as.png</normaloff>:/images/document-save-as.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="iconText">
+    <string>Save As</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileSaveAsAction</cstring>
+   </property>
+  </action>
+  <action name="fileExitAction">
+   <property name="text">
+    <string>E&amp;xit</string>
+   </property>
+   <property name="iconText">
+    <string>Exit</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileExitAction</cstring>
+   </property>
+  </action>
+  <action name="editUndoAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/edit-undo.png</normaloff>:/images/edit-undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Undo</string>
+   </property>
+   <property name="iconText">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="editRedoAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/edit-redo.png</normaloff>:/images/edit-redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Redo</string>
+   </property>
+   <property name="iconText">
+    <string>Redo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="editCutAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/edit-cut.png</normaloff>:/images/edit-cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Cut</string>
+   </property>
+   <property name="iconText">
+    <string>Cut</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="editCopyAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/edit-copy.png</normaloff>:/images/edit-copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>C&amp;opy</string>
+   </property>
+   <property name="iconText">
+    <string>Copy</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="editPasteAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/edit-paste.png</normaloff>:/images/edit-paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Paste</string>
+   </property>
+   <property name="iconText">
+    <string>Paste</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="examineAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/page-zoom.png</normaloff>:/images/page-zoom.png</iconset>
+   </property>
+   <property name="text">
+    <string>E&amp;xamine Regex</string>
+   </property>
+   <property name="iconText">
+    <string>Examine Regex for Match</string>
+   </property>
+  </action>
+  <action name="helpContentsAction">
+   <property name="text">
+    <string>&amp;Contents...</string>
+   </property>
+   <property name="iconText">
+    <string>Contents</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpContentsAction</cstring>
+   </property>
+  </action>
+  <action name="helpIndexAction">
+   <property name="text">
+    <string>&amp;Index...</string>
+   </property>
+   <property name="iconText">
+    <string>Index</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpIndexAction</cstring>
+   </property>
+  </action>
+  <action name="helpAboutAction">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="iconText">
+    <string>About</string>
+   </property>
+   <property name="shortcut">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpAboutAction</cstring>
+   </property>
+  </action>
+  <action name="regexChangedAction">
+   <property name="text">
+    <string>Action</string>
+   </property>
+   <property name="iconText">
+    <string>Action</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>regexChangedAction</cstring>
+   </property>
+  </action>
+  <action name="editPauseAction">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/media-playback-pause.png</normaloff>:/images/media-playback-pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>Pause Processing</string>
+   </property>
+   <property name="iconText">
+    <string>Pause Processing</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="editPreferencesAction">
+   <property name="text">
+    <string>Preferences</string>
+   </property>
+   <property name="iconText">
+    <string>Preferences</string>
+   </property>
+  </action>
+  <action name="helpHelpAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/help.png</normaloff>:/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help</string>
+   </property>
+   <property name="iconText">
+    <string>Help</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+/</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpHelpAction</cstring>
+   </property>
+  </action>
+  <action name="helpPythonHelpAction">
+   <property name="text">
+    <string>&amp;Python Regex Help</string>
+   </property>
+   <property name="iconText">
+    <string>Python Regex Help</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpPythonHelpAction</cstring>
+   </property>
+  </action>
+  <action name="helpRegexReferenceAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/book.png</normaloff>:/images/book.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Regex Reference Guide</string>
+   </property>
+   <property name="iconText">
+    <string>Regex Reference Guide</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpRegexReferenceAction</cstring>
+   </property>
+  </action>
+  <action name="helpVisitWebsiteAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/kodos_icon.png</normaloff>:/images/kodos_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Visit Kodos Website</string>
+   </property>
+   <property name="iconText">
+    <string>&amp;Visit Kodos Website</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpVisitWebsiteAction</cstring>
+   </property>
+  </action>
+  <action name="helpCheckForUpdateAction">
+   <property name="text">
+    <string>&amp;Check for Kodos Update</string>
+   </property>
+   <property name="iconText">
+    <string>Check for Kodos Update</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpCheckForUpdateAction</cstring>
+   </property>
+  </action>
+  <action name="helpReportBugAction">
+   <property name="text">
+    <string>Report a &amp;Bug</string>
+   </property>
+   <property name="iconText">
+    <string>Report a Bug</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpReportBugAction</cstring>
+   </property>
+  </action>
+  <action name="noopAction">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>image15</normaloff>image15</iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconText">
+    <string/>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>noopAction</cstring>
+   </property>
+  </action>
+  <action name="fileImportFileAction">
+   <property name="text">
+    <string>Import &amp;File</string>
+   </property>
+   <property name="iconText">
+    <string>Import File</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileImportFileAction</cstring>
+   </property>
+  </action>
+  <action name="fileImportURLAction">
+   <property name="text">
+    <string>Import &amp;URL</string>
+   </property>
+   <property name="iconText">
+    <string>Import URL</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>fileImportURLAction</cstring>
+   </property>
+  </action>
+  <action name="helpRegexLibAction">
+   <property name="icon">
+    <iconset resource="../kodos.qrc">
+     <normaloff>:/images/library.png</normaloff>:/images/library.png</iconset>
+   </property>
+   <property name="text">
+    <string>Regex &amp;Library</string>
+   </property>
+   <property name="iconText">
+    <string>Regex Library</string>
+   </property>
+   <property name="toolTip">
+    <string>Open the Regex Library</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+L</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>helpRegexLibAction</cstring>
+   </property>
+  </action>
+  <action name="FileRevertAction">
+   <property name="text">
+    <string>&amp;Revert Kodos File</string>
+   </property>
+   <property name="iconText">
+    <string>Revert Kodos File</string>
+   </property>
+   <property name="name" stdset="0">
+    <cstring>FileRevertAction</cstring>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>regexMultiLineEdit</tabstop>
+  <tabstop>stringMultiLineEdit</tabstop>
+  <tabstop>resultTabWidget</tabstop>
+  <tabstop>matchNumberSpinBox</tabstop>
+  <tabstop>matchTextBrowser</tabstop>
+  <tabstop>codeTextBrowser</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../kodos.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>dotallCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editCopyAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>editCopy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editCutAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>editCut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editPasteAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>editPaste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editRedoAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>editRedo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editUndoAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>editUndo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>examineAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>examine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>fileNew()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>fileOpen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>fileSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAsAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>fileSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpAboutAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpContentsAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpContents()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpHelpAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpHelp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpIndexAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpIndex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ignorecaseCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>localeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>matchNumberSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>match_num_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>239</x>
+     <y>639</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>multilineCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>unicodeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verboseCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>checkbox_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editPauseAction</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>pause()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>editPreferencesAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>preferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpReportBugAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>report_bug()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpPythonHelpAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpPythonRegex()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpRegexReferenceAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>reference_guide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpVisitWebsiteAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_website()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpCheckForUpdateAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>check_for_update()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>replace_changed_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceNumberSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>replace_num_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>425</x>
+     <y>639</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileImportFileAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>importFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileImportURLAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>importURL()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpRegexLibAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>helpRegexLib()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ignorecaseCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceTextEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>421</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>multilineCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dotallCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verboseCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>324</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>localeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>417</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>unicodeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>509</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>FileRevertAction</sender>
+   <signal>activated()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>revert_file_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>regexMultiLineEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>regex_changed_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>33</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stringMultiLineEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>string_changed_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stringMultiLineEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>359</x>
+     <y>469</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>379</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>regexMultiLineEdit</sender>
+   <signal>textChanged()</signal>
+   <receiver>KodosBA</receiver>
+   <slot>kodos_edited_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>453</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>530</x>
+     <y>-12</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>regex_changed_slot()</slot>
+  <slot>string_changed_slot()</slot>
+  <slot>kodos_edited_slot()</slot>
+ </slots>
+</ui>

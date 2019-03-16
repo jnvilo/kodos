@@ -1,5 +1,9 @@
 Kodos ChangeLog
-
+2.5.0
+=====
+*) Migrated to PyQt5 
+*) MIgrated to Python 3.x - Was done with 2to3
+*) Added code to make sure all child windows open in the same screeen where parent is. 
 2.4.9
 =====
  *) Fixed help window (corrects problem related to tooltip api changes)

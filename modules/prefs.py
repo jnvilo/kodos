@@ -4,18 +4,18 @@
 from PyQt5.QtCore import pyqtSignal, QSettings
 from PyQt5.QtWidgets import QDialog
 from PyQt5.QtWidgets import QFontDialog
-from PyQt5.QtWidgets import QMainWindow
-from PyQt5.QtWidgets import QDialog
+
 
 from . prefsBA import Ui_PrefsBA
 from . import help
+from . windowutils import WindowUtils
 
-class Preferences(QDialog, Ui_PrefsBA):
+
+class Preferences(WindowUtils,QDialog, Ui_PrefsBA):
 
     prefsSaved = pyqtSignal()
 
     def __init__(self, parent, autoload=0):
-
         super(Preferences,self).__init__()
         self.parent = parent
         self.setupUi(self)

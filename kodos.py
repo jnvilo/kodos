@@ -15,6 +15,7 @@ import signal
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QDesktopWidget
 #try:
     #from PyQt4.QtGui import *
     #from PyQt4.QtCore import *
@@ -978,6 +979,9 @@ class Kodos(QMainWindow,Ui_KodosBA):
         f = os.path.join("help", "regex-lib.xml")
         self.regexlibwin = RegexLibrary(f)
         self.regexlibwin.pasteRegexLib.connect(self.pasteFromRegexLib)
+        
+    
+        
         self.regexlibwin.show()
 
 
@@ -1124,6 +1128,16 @@ def main():
         qApp.installTranslator(translator)
 
     kodos = Kodos(filename, debug)
+
+    #Find the current window where the mouse is just in case we are in a multi
+    #monitor setup. And then move to its center.
+    frameGm = kodos.frameGeometry()
+    screen = QApplication.desktop().screenNumber(QApplication.desktop().cursor().pos())
+    centerPoint = QApplication.desktop().availableGeometry(screen).center()
+    frameGm.moveCenter(centerPoint)
+    kodos.move(frameGm.topLeft())
+
+
 
     kodos.show()
 

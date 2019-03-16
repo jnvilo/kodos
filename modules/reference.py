@@ -5,10 +5,10 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QMainWindow
 from . referenceBA import Ui_ReferenceBA
 from . util import kodos_toolbar_logo, restoreWindowSettings, saveWindowSettings
-
+from . windowutils import WindowUtils
 GEO = "regex-ref_geometry"
 
-class Reference(QMainWindow, Ui_ReferenceBA):
+class Reference(WindowUtils, QMainWindow, Ui_ReferenceBA):
 
     pasteSymbol = pyqtSignal(str)
 

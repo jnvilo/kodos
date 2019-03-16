@@ -4,9 +4,9 @@
 from . aboutBA import Ui_AboutBA
 from . import  version
 from PyQt5.QtWidgets import QDialog
+from . windowutils import WindowUtils
 
-
-class About(QDialog, Ui_AboutBA):
+class About(WindowUtils, QDialog, Ui_AboutBA):
     def __init__(self):
         super(About, self).__init__()
         self.setupUi(self)
